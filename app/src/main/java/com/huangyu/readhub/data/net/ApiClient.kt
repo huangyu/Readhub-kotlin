@@ -1,4 +1,4 @@
-package com.huangyu.readhub.data.network
+package com.huangyu.readhub.data.net
 
 import com.huangyu.readhub.BuildConfig
 import com.huangyu.readhub.util.AppConstants

@@ -1,6 +1,6 @@
 package com.huangyu.readhub.ui.main.model
 
-import com.huangyu.readhub.data.network.ApiService
+import com.huangyu.readhub.data.net.ApiService
 import com.huangyu.readhub.mvp.BaseModel
 import javax.inject.Inject
 

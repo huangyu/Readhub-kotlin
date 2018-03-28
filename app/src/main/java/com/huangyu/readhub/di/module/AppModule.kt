@@ -2,8 +2,8 @@ package com.huangyu.readhub.di.module
 
 import android.app.Application
 import android.content.Context
-import com.huangyu.readhub.data.network.ApiClient
-import com.huangyu.readhub.data.network.ApiService
+import com.huangyu.readhub.data.net.ApiClient
+import com.huangyu.readhub.data.net.ApiService
 import com.huangyu.readhub.util.SchedulerProvider
 import dagger.Module
 import dagger.Provides

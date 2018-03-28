@@ -1,4 +1,4 @@
-package com.huangyu.readhub_kotlin
+package com.huangyu.readhub
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

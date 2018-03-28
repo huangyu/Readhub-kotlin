@@ -1,0 +1,32 @@
+ext {
+    projectName = 'Readhub-kotlin'
+    compileSdkVersion = 27
+    buildToolsVersion = '27.0.2'
+    minSdkVersion = 15
+    targetSdkVersion = 27
+    versionCode = 100
+    versionName = '1.0.0'
+    jksPath = '../hy.jks'
+    keyAlias = 'hy'
+    keyPassword = 'hy123456'
+    storePassword = 'hy123456'
+
+    android_support = '27.1.0'
+    constraint_layout = '1.0.2'
+    testrunner = '1.0.1'
+    junit = '4.12'
+    espresso = '3.0.1'
+    kotlin = '1.2.30'
+    android_kotlin = '0.2'
+    dagger2 = '2.11'
+    okhttp = '3.9.1'
+    logging_interceptor = '3.9.0'
+    retrofit = '2.3.0'
+    adapter_rxjava2 = '2.4.0'
+    converter_gson = '2.3.0'
+    rxandroid2 = '2.0.1'
+    rxjava2 = '2.0.2'
+    butterknife = '8.8.1'
+    sqlbrite = '3.2.0'
+    room = '1.0.0'
+}

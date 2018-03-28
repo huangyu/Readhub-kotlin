@@ -1,4 +1,4 @@
-package com.huangyu.readhub_kotlin
+package com.huangyu.readhub
 
 import org.junit.Test
 

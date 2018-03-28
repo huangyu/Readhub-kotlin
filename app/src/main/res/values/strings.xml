@@ -1,3 +1,10 @@
 <resources>
+    <!-- 应用名称 -->
     <string name="app_name">Readhub</string>
+
+    <!-- 底部标题 -->
+    <string name="hot_topics">热门话题</string>
+    <string name="tech_news">科技动态</string>
+    <string name="dev_news">开发者资讯</string>
+    <string name="block_chain_news">区块链快讯</string>
 </resources>

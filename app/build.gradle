@@ -65,6 +65,9 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroid2"
 
     // room
-    implementation "android.arch.persistence.room:rxjava2:$rootProject.room"
-    kapt "android.arch.persistence.room:compiler:$rootProject.room"
+//    implementation "android.arch.persistence.room:rxjava2:$rootProject.room"
+//    kapt "android.arch.persistence.room:compiler:$rootProject.room"
+
+    // bottom-navigation-bar
+    compile "com.ashokvarma.android:bottom-navigation-bar:$rootProject.bottom_navi_bar"
 }

@@ -8,6 +8,12 @@ import com.huangyu.readhub.base.LazyLoadFragment
  */
 class TechNewsFragment : LazyLoadFragment() {
 
+    companion object {
+        fun newInstance(): TechNewsFragment {
+            return TechNewsFragment()
+        }
+    }
+
     override fun setContentView(): Int = R.layout.fragment_tech
 
     override fun lazyLoad() {

@@ -4,8 +4,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    buildToolsVersion rootProject.buildToolsVersion
+    compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
         applicationId "com.huangyu.readhub_kotlin"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -24,50 +24,60 @@ android {
     packagingOptions {
         exclude 'META-INF/rxjava.properties'
     }
+    '27.0.3'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // test
+    // Test
     testImplementation "junit:junit:$rootProject.junit"
     androidTestImplementation "com.android.support.test:runner:$rootProject.testrunner"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espresso"
 
-    // android support libraries
+    //Aandroid support libraries
     implementation "com.android.support:appcompat-v7:$rootProject.android_support"
     implementation "com.android.support:recyclerview-v7:$rootProject.android_support"
     implementation "com.android.support:design:$rootProject.android_support"
     implementation "com.android.support.constraint:constraint-layout:$rootProject.constraint_layout"
 
-    // kotlin
+    // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$rootProject.ext.kotlin"
     implementation "androidx.core:core-ktx:$rootProject.android_kotlin"
 
-    // dagger
+    // Dagger2
     implementation "com.google.dagger:dagger:$rootProject.dagger2"
     kapt "com.google.dagger:dagger-compiler:$rootProject.dagger2"
     kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger2"
     kaptAndroidTest "com.google.dagger:dagger-compiler:$rootProject.dagger2"
     implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2"
 
-    // okhttp
+    // OkHttp
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttp"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.logging_interceptor"
 
-    // retrofit
+    // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.adapter_rxjava2"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.converter_gson"
 
-    // rxjava
+    // RxJava
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroid2"
 
-    // room
+    // Room
 //    implementation "android.arch.persistence.room:rxjava2:$rootProject.room"
 //    kapt "android.arch.persistence.room:compiler:$rootProject.room"
 
-    // bottom-navigation-bar
-    compile "com.ashokvarma.android:bottom-navigation-bar:$rootProject.bottom_navi_bar"
+    // Bottom-navigation-bar
+    implementation "com.ashokvarma.android:bottom-navigation-bar:$rootProject.bottom_navi_bar"
+
+    // Irecyclerview
+    implementation "com.github.Aspsine:IRecyclerView:$rootProject.irecycler_view"
+
+    // Prettytime
+    implementation "org.ocpsoft.prettytime:prettytime:$rootProject.pretty_time"
+
+    // Joda
+    implementation "net.danlew:android.joda:$rootProject.joda"
 }

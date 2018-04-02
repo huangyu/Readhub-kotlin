@@ -7,4 +7,6 @@ object AppConstants {
 
     const val API_SERVER_URL = "https://api.readhub.me"
 
+    const val PER_PAGE_SIZE = 20
+
 }

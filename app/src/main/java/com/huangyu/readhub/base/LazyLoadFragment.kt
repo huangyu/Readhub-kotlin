@@ -12,11 +12,11 @@ import android.view.ViewGroup
  */
 abstract class LazyLoadFragment : Fragment() {
 
-    var isInit: Boolean = false
-    var isLoad: Boolean = false
+    private var isInit: Boolean = false
+    private var isLoad: Boolean = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater.inflate(setContentView(), container, false)
+        val view = inflater.inflate(setContentView(), container, false)
         isInit = true
         return view
     }

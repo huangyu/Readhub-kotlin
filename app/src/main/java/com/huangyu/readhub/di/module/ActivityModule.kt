@@ -1,6 +1,6 @@
 package com.huangyu.readhub.di.module
 
-import com.huangyu.readhub.ui.main.module.MainModule
+import com.huangyu.readhub.ui.hot.module.HotTopicsFragmentProvider
 import com.huangyu.readhub.ui.main.view.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -11,7 +11,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityModule {
 
-    @ContributesAndroidInjector(modules = [(MainModule::class)])
+    @ContributesAndroidInjector(modules = [(HotTopicsFragmentProvider::class)])
     abstract fun bindMainActivity(): MainActivity
 
 }

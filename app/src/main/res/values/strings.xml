@@ -7,4 +7,8 @@
     <string name="tech_news">科技动态</string>
     <string name="dev_news">开发者资讯</string>
     <string name="block_chain_news">区块链快讯</string>
+
+    <!-- 加载更多控件 -->
+    <string name="net_err">网络错误，请重试</string>
+    <string name="no_more">已无更多数据</string>
 </resources>

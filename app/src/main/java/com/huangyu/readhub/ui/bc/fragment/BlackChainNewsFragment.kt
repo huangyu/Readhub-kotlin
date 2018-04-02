@@ -8,6 +8,12 @@ import com.huangyu.readhub.base.LazyLoadFragment
  */
 class BlackChainNewsFragment : LazyLoadFragment() {
 
+    companion object {
+        fun newInstance(): BlackChainNewsFragment {
+            return BlackChainNewsFragment()
+        }
+    }
+
     override fun setContentView(): Int = R.layout.fragment_bc
 
     override fun lazyLoad() {

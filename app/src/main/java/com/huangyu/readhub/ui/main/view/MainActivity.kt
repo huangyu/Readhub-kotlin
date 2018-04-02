@@ -1,6 +1,6 @@
 package com.huangyu.readhub.ui.main.view
 
-import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
@@ -10,26 +10,29 @@ import com.huangyu.readhub.ui.bc.fragment.BlackChainNewsFragment
 import com.huangyu.readhub.ui.dev.fragment.DevNewsFragment
 import com.huangyu.readhub.ui.hot.fragment.HotTopicsFragment
 import com.huangyu.readhub.ui.main.adapter.ViewPagerAdapter
-import com.huangyu.readhub.ui.main.model.IMainModel
-import com.huangyu.readhub.ui.main.presenter.MainPresenter
 import com.huangyu.readhub.ui.tech.fragment.TechNewsFragment
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), IMainView {
+class MainActivity : BaseActivity(), HasSupportFragmentInjector {
 
     @Inject
-    lateinit var presenter: MainPresenter<IMainView, IMainModel>
+    lateinit var injector: DispatchingAndroidInjector<Fragment>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        presenter.onAttach(this)
-    }
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> = injector
 
     override fun getLayoutId(): Int = R.layout.activity_main
 
     override fun initView() {
-        view_pager.adapter = ViewPagerAdapter(listOf(HotTopicsFragment(), TechNewsFragment(), DevNewsFragment(), BlackChainNewsFragment()), supportFragmentManager)
+        view_pager.adapter = ViewPagerAdapter(listOf(
+                HotTopicsFragment.newInstance(),
+                TechNewsFragment.newInstance(),
+                DevNewsFragment.newInstance(),
+                BlackChainNewsFragment.newInstance()),
+                supportFragmentManager)
 
         bottom_navigation_bar.activeColor = R.color.colorPrimary
         bottom_navigation_bar
@@ -67,11 +70,6 @@ class MainActivity : BaseActivity(), IMainView {
 
             }
         })
-    }
-
-    override fun onDestroy() {
-        presenter.onDetach()
-        super.onDestroy()
     }
 
 }

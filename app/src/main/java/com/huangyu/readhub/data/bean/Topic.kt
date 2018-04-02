@@ -4,7 +4,7 @@ package com.huangyu.readhub.data.bean
  * Created by huangyu on 2018/3/28.
  */
 data class Topic(
-        var id: Int,
+        var id: String,
         var createdAt: String,
         var order: Int,
         var publishDate: String,

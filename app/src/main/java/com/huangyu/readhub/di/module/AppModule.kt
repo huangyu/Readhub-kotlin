@@ -22,7 +22,7 @@ class AppModule {
 
     @Provides
     @Singleton
-    internal fun provideApiClient(apiClient: ApiClient): ApiService = apiClient.create()
+    internal fun provideApiService(apiClient: ApiClient): ApiService = apiClient.create()
 
     @Provides
     internal fun provideCompositeDisposable(): CompositeDisposable = CompositeDisposable()

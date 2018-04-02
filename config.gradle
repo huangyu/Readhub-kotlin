@@ -1,7 +1,7 @@
 ext {
     projectName = 'Readhub-kotlin'
     compileSdkVersion = 27
-    buildToolsVersion = '27.0.2'
+    buildToolsVersion = '27.0.3'
     minSdkVersion = 15
     targetSdkVersion = 27
     versionCode = 100
@@ -30,4 +30,8 @@ ext {
     sqlbrite = '3.2.0'
     room = '1.0.0'
     bottom_navi_bar = '2.0.4'
+    irecycler_view = "0.0.5"
+    expandable_layout = '1.6.0'
+    pretty_time = '4.0.1.Final'
+    joda = "2.9.3.1"
 }

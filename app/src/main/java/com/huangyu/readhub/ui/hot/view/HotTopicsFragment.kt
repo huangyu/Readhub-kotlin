@@ -66,7 +66,6 @@ class HotTopicsFragment : LazyLoadFragment(), IHotTopicsView, SwipeRefreshLayout
         recycler_view.layoutManager = LinearLayoutManager(context)
         recycler_view.iAdapter = adapter
         recycler_view.setOnLoadMoreListener(this)
-//        recycler_view.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         footer = recycler_view.loadMoreFooterView as UniversalLoadMoreFooterView
         footer.status = UniversalLoadMoreFooterView.Status.GONE
@@ -75,6 +74,7 @@ class HotTopicsFragment : LazyLoadFragment(), IHotTopicsView, SwipeRefreshLayout
     private fun initData() {
         footer.status = UniversalLoadMoreFooterView.Status.GONE
         swipe_refresh_layout.post { swipe_refresh_layout.isRefreshing = true }
+
         onRefresh()
     }
 
@@ -95,6 +95,8 @@ class HotTopicsFragment : LazyLoadFragment(), IHotTopicsView, SwipeRefreshLayout
     }
 
     override fun onRefresh() {
+        adapter.clearList()
+
         presenter.queryHotTopics()
     }
 

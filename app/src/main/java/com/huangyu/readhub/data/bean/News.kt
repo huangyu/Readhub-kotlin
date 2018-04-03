@@ -9,6 +9,7 @@ data class News(
         var title: String,
         var groupId: String,
         var stateName: String,
+        var siteName: String,
         var siteSlug: String,
         var mobileUrl: String,
         var authorName: String,

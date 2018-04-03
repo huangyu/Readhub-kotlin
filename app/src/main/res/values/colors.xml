@@ -4,6 +4,10 @@
     <color name="colorPrimaryDark">#455A64</color>
     <color name="colorAccent">#9E9E9E</color>
 
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBg">#FAFAFA</color>
+
     <color name="colorTxtTitle">#212121</color>
-    <color name="colorTxtSummary">#757575</color>
+    <color name="colorTxtSummary">#434343</color>
+    <color name="colorTxtTime">#9E9E9E</color>
 </resources>

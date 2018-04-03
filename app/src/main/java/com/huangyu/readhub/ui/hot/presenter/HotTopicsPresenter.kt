@@ -19,7 +19,7 @@ class HotTopicsPresenter<V : IHotTopicsView, M : IHotTopicsModel> @Inject intern
             if (lastCursor.isEmpty()) {
                 compositeDisposable.add(
                         it.queryHotTopics()
-                                .delay(500, TimeUnit.MILLISECONDS)
+                                .delay(250, TimeUnit.MILLISECONDS)
                                 .compose(schedulerProvider.ioToMainObservableScheduler())
                                 .subscribe(
                                         { _topics ->
@@ -33,7 +33,7 @@ class HotTopicsPresenter<V : IHotTopicsView, M : IHotTopicsModel> @Inject intern
             } else {
                 compositeDisposable.add(
                         it.queryHotTopics(lastCursor[0])
-                                .delay(500, TimeUnit.MILLISECONDS)
+                                .delay(250, TimeUnit.MILLISECONDS)
                                 .compose(schedulerProvider.ioToMainObservableScheduler())
                                 .subscribe(
                                         { _topics ->

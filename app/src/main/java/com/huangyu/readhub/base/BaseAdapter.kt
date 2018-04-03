@@ -26,6 +26,11 @@ abstract class BaseAdapter<T>(val context: Context?, var list: MutableList<T>? =
         return if (list == null) null else list!![position]
     }
 
+    fun clearList() {
+        this.list!!.clear()
+        this.notifyDataSetChanged()
+    }
+
     fun initList(l: List<T>) {
         this.list!!.clear()
         this.list!!.addAll(l)

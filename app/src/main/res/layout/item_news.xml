@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="end"
-        android:maxLines="1"
+        android:maxLines="2"
         android:textColor="@color/colorTxtTitle"
         android:textSize="14sp"/>
 
@@ -26,7 +26,7 @@
         android:layout_marginTop="4dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textColor="@color/colorTxtTime"
+        android:textColor="@color/colorTxtSub"
         android:textSize="12sp"/>
 
 </LinearLayout>

@@ -41,6 +41,7 @@ class HotTopicsAdapter(context: Context?) : BaseAdapter<Topic>(context) {
         private lateinit var tvSummary: TextView
         private lateinit var expandableLayout: ExpandableLayout
         private lateinit var rvNews: RecyclerView
+        private val viewPool = RecyclerView.RecycledViewPool()
 
         private lateinit var adapter: NewsAdapter
         private var manager = LinearLayoutManager(context)
@@ -78,11 +79,12 @@ class HotTopicsAdapter(context: Context?) : BaseAdapter<Topic>(context) {
             })
 
             rvNews.layoutManager = manager
+            rvNews.recycledViewPool = viewPool
             if (rvNews.adapter == null) {
                 adapter = NewsAdapter(context)
                 rvNews.adapter = adapter
             }
-            adapter.initList(t?.newsArray!!)
+            adapter.initList(t?.newsArray!!.take(3))
         }
 
         private fun getFormatTitle(t: Topic?, prettyTime: PrettyTime): SpannableString {

@@ -2,6 +2,9 @@
     <!-- 应用名称 -->
     <string name="app_name">Readhub</string>
 
+    <!-- 提示语 -->
+    <string name="tips_exit">再按一次返回键将退出</string>
+
     <!-- 底部标题 -->
     <string name="hot_topics">热门话题</string>
     <string name="tech_news">科技动态</string>

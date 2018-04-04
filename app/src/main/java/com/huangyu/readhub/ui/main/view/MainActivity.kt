@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
 import com.huangyu.readhub.R
-import com.huangyu.readhub.base.BaseActivity
+import com.huangyu.readhub.base.BaseInjectActivity
 import com.huangyu.readhub.ui.bc.fragment.BlackChainNewsFragment
 import com.huangyu.readhub.ui.dev.fragment.DevNewsFragment
 import com.huangyu.readhub.ui.hot.fragment.HotTopicsFragment
@@ -19,7 +19,7 @@ import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
-class MainActivity : BaseActivity(), HasSupportFragmentInjector {
+class MainActivity : BaseInjectActivity(), HasSupportFragmentInjector {
 
     @Inject
     lateinit var injector: DispatchingAndroidInjector<Fragment>

@@ -9,5 +9,5 @@
 
     <color name="colorTxtTitle">#212121</color>
     <color name="colorTxtSummary">#434343</color>
-    <color name="colorTxtTime">#9E9E9E</color>
+    <color name="colorTxtSub">#9E9E9E</color>
 </resources>

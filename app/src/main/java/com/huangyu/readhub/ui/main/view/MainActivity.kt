@@ -2,6 +2,8 @@ package com.huangyu.readhub.ui.main.view
 
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
+import android.view.KeyEvent
+import android.widget.Toast
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.ashokvarma.bottomnavigation.BottomNavigationItem
 import com.huangyu.readhub.R
@@ -21,6 +23,8 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
 
     @Inject
     lateinit var injector: DispatchingAndroidInjector<Fragment>
+
+    private var firstTime: Long = 0L
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = injector
 
@@ -70,6 +74,19 @@ class MainActivity : BaseActivity(), HasSupportFragmentInjector {
 
             }
         })
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event!!.action == KeyEvent.ACTION_DOWN) {
+            if (System.currentTimeMillis() - firstTime > 2000) {
+                Toast.makeText(this, getString(R.string.tips_exit), Toast.LENGTH_SHORT).show()
+                firstTime = System.currentTimeMillis()
+            } else {
+                finish()
+            }
+            return true
+        }
+        return super.onKeyDown(keyCode, event)
     }
 
 }

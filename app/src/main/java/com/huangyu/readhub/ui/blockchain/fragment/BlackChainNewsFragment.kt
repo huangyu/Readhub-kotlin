@@ -1,4 +1,4 @@
-package com.huangyu.readhub.ui.bc.fragment
+package com.huangyu.readhub.ui.blockchain.fragment
 
 import com.huangyu.readhub.R
 import com.huangyu.readhub.base.LazyLoadFragment

@@ -5,10 +5,9 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Build
-import android.os.Handler
-import android.os.Looper
 import android.support.annotation.RequiresApi
 import android.support.v4.widget.SwipeRefreshLayout
+import android.view.MenuItem
 import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
@@ -21,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_article.*
 /**
  * Created by huangyu on 2018/4/4.
  */
-class ArticleActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener, Runnable {
+class ArticleActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
 
     companion object {
         private const val EXTRA_TITLE = "title"
@@ -46,7 +45,8 @@ class ArticleActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener, Ru
         title = intent.getStringExtra(EXTRA_TITLE)
         url = intent.getStringExtra(EXTRA_URL)
 
-        setTitle(title)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        setTitle(getString(R.string.app_name))
 
         refresh_layout.setColorSchemeResources(R.color.colorPrimary)
         refresh_layout.setOnRefreshListener(this)
@@ -69,6 +69,8 @@ class ArticleActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener, Ru
 
             override fun onPageFinished(view: WebView?, url: String?) {
                 progress_bar.visibility = View.GONE
+
+                refresh_layout.isRefreshing = false
             }
 
         }
@@ -85,17 +87,18 @@ class ArticleActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener, Ru
 
     override fun onRefresh() {
         web_view.reload()
-
-        Handler(Looper.getMainLooper()).postDelayed({ run() }, 1000)
-    }
-
-    override fun run() {
-        refresh_layout.isRefreshing = false
     }
 
     override fun onDestroy() {
         web_view.destroy()
         super.onDestroy()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.itemId) {
+            android.R.id.home -> finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

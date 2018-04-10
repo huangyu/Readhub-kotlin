@@ -9,10 +9,8 @@ import android.support.annotation.RequiresApi
 import android.support.v4.widget.SwipeRefreshLayout
 import android.view.MenuItem
 import android.view.View
-import android.webkit.WebChromeClient
-import android.webkit.WebSettings
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
+import android.widget.Toast
 import com.huangyu.readhub.R
 import com.huangyu.readhub.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_article.*
@@ -34,8 +32,8 @@ class ArticleActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
         }
     }
 
-    private var title: String? = null
-    private var url: String? = null
+    private lateinit var title: String
+    private lateinit var url: String
 
     override fun getLayoutId(): Int = R.layout.activity_article
 
@@ -46,7 +44,7 @@ class ArticleActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
         url = intent.getStringExtra(EXTRA_URL)
 
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        setTitle(getString(R.string.app_name))
+        setTitle(title)
 
         refresh_layout.setColorSchemeResources(R.color.colorPrimary)
         refresh_layout.setOnRefreshListener(this)
@@ -73,6 +71,14 @@ class ArticleActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
                 refresh_layout.isRefreshing = false
             }
 
+            override fun onReceivedError(view: WebView?, request: WebResourceRequest?, error: WebResourceError?) {
+                super.onReceivedError(view, request, error)
+
+                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP && request!!.isForMainFrame) {
+                    Toast.makeText(this@ArticleActivity, getString(R.string.load_err), Toast.LENGTH_SHORT).show()
+                }
+            }
+
         }
         web_view.webChromeClient = object : WebChromeClient() {
 
@@ -89,16 +95,16 @@ class ArticleActivity : BaseActivity(), SwipeRefreshLayout.OnRefreshListener {
         web_view.reload()
     }
 
-    override fun onDestroy() {
-        web_view.destroy()
-        super.onDestroy()
-    }
-
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             android.R.id.home -> finish()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onDestroy() {
+        web_view.destroy()
+        super.onDestroy()
     }
 
 }

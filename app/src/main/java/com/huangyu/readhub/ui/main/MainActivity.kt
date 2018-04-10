@@ -1,4 +1,4 @@
-package com.huangyu.readhub.ui.main.view
+package com.huangyu.readhub.ui.main
 
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
@@ -47,7 +47,7 @@ class MainActivity : BaseInjectActivity(), HasSupportFragmentInjector {
                 .initialise()
     }
 
-    override fun initListeners() {
+    override fun initData() {
         view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
             }

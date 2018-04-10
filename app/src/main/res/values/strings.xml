@@ -14,4 +14,8 @@
     <!-- 加载更多控件 -->
     <string name="net_err">网络错误，请重试</string>
     <string name="no_more">已无更多数据</string>
+
+    <!-- 文章 -->
+    <string name="load_err">加载失败</string>
+    <string name="dependent_event">相关事件</string>
 </resources>

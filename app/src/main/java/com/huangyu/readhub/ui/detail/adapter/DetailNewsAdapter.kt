@@ -1,7 +1,6 @@
-package com.huangyu.readhub.ui.hot.adapter
+package com.huangyu.readhub.ui.detail.adapter
 
 import android.content.Context
-import android.graphics.Color
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextPaint
@@ -17,15 +16,15 @@ import com.huangyu.readhub.base.BaseAdapter
 import com.huangyu.readhub.base.BaseViewHolder
 import com.huangyu.readhub.data.bean.News
 import com.huangyu.readhub.ui.article.ArticleActivity
-import com.huangyu.readhub.ui.main.view.MainActivity
+import com.huangyu.readhub.ui.detail.DetailActivity
 
 /**
- * Created by huangyu on 2018/3/30.
+ * Created by huangyu on 2018/4/10.
  */
-class NewsAdapter(context: Context?) : BaseAdapter<News>(context) {
+class DetailNewsAdapter(context: Context?) : BaseAdapter<News>(context) {
 
     override fun onCreateViewHolder(inflater: LayoutInflater, parent: ViewGroup, viewType: Int): BaseViewHolder<News?> {
-        return NewsAdapter.NewsHolder(context, inflater.inflate(R.layout.item_news, parent, false))
+        return DetailNewsAdapter.NewsHolder(context, inflater.inflate(R.layout.item_news, parent, false))
     }
 
     class NewsHolder(val context: Context?, itemView: View) : BaseViewHolder<News?>(itemView) {
@@ -34,7 +33,6 @@ class NewsAdapter(context: Context?) : BaseAdapter<News>(context) {
         private lateinit var tvSite: TextView
 
         override fun onBind(t: News?, position: Int) {
-
             tvTitle = findViewById(R.id.tv_title)
             tvSite = findViewById(R.id.tv_site)
 
@@ -56,7 +54,7 @@ class NewsAdapter(context: Context?) : BaseAdapter<News>(context) {
 
         override fun updateDrawState(ds: TextPaint) {
             super.updateDrawState(ds)
-            ds.color = Color.BLUE
+            ds.color = context!!.resources.getColor(R.color.colorPrimary)
             ds.isUnderlineText = true
         }
 
@@ -68,7 +66,7 @@ class NewsAdapter(context: Context?) : BaseAdapter<News>(context) {
             formatTitle.setSpan(CheckedClickableSpan(context, title, url), 0, title.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
             tvTitle.text = formatTitle
 
-            ArticleActivity.start(context as MainActivity, title, url)
+            ArticleActivity.start(context as DetailActivity, title, url)
         }
 
     }
@@ -82,7 +80,7 @@ class NewsAdapter(context: Context?) : BaseAdapter<News>(context) {
         }
 
         override fun onClick(widget: View?) {
-            ArticleActivity.start(context as MainActivity, title, url)
+            ArticleActivity.start(context as DetailActivity, title, url)
         }
 
     }

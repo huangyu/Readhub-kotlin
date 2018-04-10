@@ -22,6 +22,8 @@ import com.huangyu.readhub.custom.ExpandableLayout.State.Companion.COLLAPSING
 import com.huangyu.readhub.custom.ExpandableLayout.State.Companion.EXPANDED
 import com.huangyu.readhub.custom.ExpandableLayout.State.Companion.EXPANDING
 import com.huangyu.readhub.data.bean.Topic
+import com.huangyu.readhub.ui.detail.DetailActivity
+import com.huangyu.readhub.ui.main.MainActivity
 import org.joda.time.DateTime
 import org.ocpsoft.prettytime.PrettyTime
 
@@ -43,7 +45,7 @@ class HotTopicsAdapter(context: Context?) : BaseAdapter<Topic>(context) {
         private lateinit var rvNews: RecyclerView
         private val viewPool = RecyclerView.RecycledViewPool()
 
-        private lateinit var adapter: NewsAdapter
+        private lateinit var adapter: HotNewsAdapter
         private var manager = LinearLayoutManager(context)
 
         private val prettyTime = PrettyTime()
@@ -75,13 +77,13 @@ class HotTopicsAdapter(context: Context?) : BaseAdapter<Topic>(context) {
             })
 
             tvSummary.setOnClickListener({ _ ->
-                // TODO
+                DetailActivity.start(context as MainActivity, t!!.id, t.title)
             })
 
             rvNews.layoutManager = manager
             rvNews.recycledViewPool = viewPool
             if (rvNews.adapter == null) {
-                adapter = NewsAdapter(context)
+                adapter = HotNewsAdapter(context)
                 rvNews.adapter = adapter
             }
             adapter.initList(t?.newsArray!!.take(3))

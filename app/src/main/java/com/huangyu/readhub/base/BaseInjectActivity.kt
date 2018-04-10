@@ -15,13 +15,13 @@ abstract class BaseInjectActivity : AppCompatActivity(), IView {
         setContentView(getLayoutId())
         AndroidInjection.inject(this)
         initView()
-        initListeners()
+        initData()
     }
 
     abstract fun getLayoutId(): Int
 
     abstract fun initView()
 
-    abstract fun initListeners()
+    abstract fun initData()
 
 }

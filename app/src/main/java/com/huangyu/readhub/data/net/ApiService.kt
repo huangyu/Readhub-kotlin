@@ -19,6 +19,6 @@ interface ApiService {
     fun getTopics(@Query("pageSize") pageSize: Int): Observable<Topics>
 
     @GET("topic/{topicId}")
-    fun getTopicDetail(@Path("topicId") topicId: Int): Observable<TopicDetail>
+    fun getTopicDetail(@Path("topicId") topicId: String): Observable<TopicDetail>
 
 }

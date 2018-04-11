@@ -3,6 +3,7 @@ package com.huangyu.readhub.ui.detail
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.view.View
@@ -20,7 +21,7 @@ import javax.inject.Inject
 /**
  * Created by huangyu on 2018/4/10.
  */
-class DetailActivity : BaseInjectActivity(), IDetailView {
+class DetailActivity : BaseInjectActivity(), IDetailView, SwipeRefreshLayout.OnRefreshListener {
 
     companion object {
         private const val EXTRA_ID = "id"
@@ -51,9 +52,14 @@ class DetailActivity : BaseInjectActivity(), IDetailView {
     }
 
     override fun initView() {
+        title = intent.getStringExtra(EXTRA_TITLE)
+        id = intent.getStringExtra("id")
+
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
 
-        title = intent.getStringExtra(EXTRA_TITLE)
+        swipe_refresh_layout.setOnRefreshListener(this)
+        swipe_refresh_layout.setColorSchemeResources(R.color.colorAccent)
+
         setTitle(title)
 
         rv_news.layoutManager = LinearLayoutManager(this)
@@ -66,13 +72,17 @@ class DetailActivity : BaseInjectActivity(), IDetailView {
     }
 
     override fun initData() {
-        tv_dependent_event.visibility = View.INVISIBLE
-
-        id = intent.getStringExtra("id")
+        swipe_refresh_layout.post { swipe_refresh_layout.isRefreshing = true }
         presenter.queryTopicDetail(id)
     }
 
+    override fun onRefresh() {
+        initData()
+    }
+
     override fun onRefreshFinish(detail: TopicDetail) {
+        swipe_refresh_layout.isRefreshing = false
+
         tv_title.text = detail.title
         tv_summary.text = detail.summary
 
@@ -85,6 +95,7 @@ class DetailActivity : BaseInjectActivity(), IDetailView {
     override fun onRefreshError(msg: Throwable) {
         println(msg)
 
+        swipe_refresh_layout.isRefreshing = false
         tv_dependent_event.visibility = View.INVISIBLE
     }
 

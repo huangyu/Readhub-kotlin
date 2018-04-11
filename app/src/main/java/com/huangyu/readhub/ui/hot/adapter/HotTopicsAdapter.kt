@@ -8,6 +8,7 @@ import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.AbsoluteSizeSpan
 import android.text.style.ForegroundColorSpan
+import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,23 +33,21 @@ import org.ocpsoft.prettytime.PrettyTime
  */
 class HotTopicsAdapter(context: Context?) : BaseAdapter<Topic>(context) {
 
+    private var expandStateArray: SparseArray<Boolean> = SparseArray()
+    private val prettyTime = PrettyTime()
+    private lateinit var adapter: HotNewsAdapter
+
     override fun onCreateViewHolder(inflater: LayoutInflater, parent: ViewGroup, viewType: Int): BaseViewHolder<Topic?> {
-        return HotTopicsViewHolder(context, inflater.inflate(R.layout.item_hot_topics, parent, false))
+        return HotTopicsViewHolder(inflater.inflate(R.layout.item_hot_topics, parent, false))
     }
 
-    class HotTopicsViewHolder(val context: Context?, itemView: View) : BaseViewHolder<Topic?>(itemView) {
+    inner class HotTopicsViewHolder(itemView: View) : BaseViewHolder<Topic?>(itemView) {
 
         private lateinit var llRoot: LinearLayout
         private lateinit var tvTitle: TextView
         private lateinit var tvSummary: TextView
         private lateinit var expandableLayout: ExpandableLayout
         private lateinit var rvNews: RecyclerView
-        private val viewPool = RecyclerView.RecycledViewPool()
-
-        private lateinit var adapter: HotNewsAdapter
-        private var manager = LinearLayoutManager(context)
-
-        private val prettyTime = PrettyTime()
 
         override fun onBind(t: Topic?, position: Int) {
             llRoot = findViewById(R.id.ll_root)
@@ -59,14 +58,19 @@ class HotTopicsAdapter(context: Context?) : BaseAdapter<Topic>(context) {
             expandableLayout.setOnExpansionUpdateListener(object : ExpandableLayout.OnExpansionUpdateListener {
                 override fun onExpansionUpdate(expansionFraction: Float, state: Int) {
                     when (state) {
-                        COLLAPSING -> llRoot.setBackgroundResource(R.color.colorBg)
-                        COLLAPSED -> llRoot.setBackgroundResource(R.color.colorBg)
-                        EXPANDING -> llRoot.setBackgroundResource(R.drawable.card_bg)
-                        EXPANDED -> llRoot.setBackgroundResource(R.drawable.card_bg)
+                        COLLAPSING, COLLAPSED -> {
+                            llRoot.setBackgroundResource(R.color.colorBg)
+                            expandStateArray.put(position, false)
+                        }
+                        EXPANDING, EXPANDED -> {
+                            llRoot.setBackgroundResource(R.drawable.card_bg)
+                            expandStateArray.put(position, true)
+                        }
                     }
                 }
-
             })
+            expandableLayout.setExpanded(expandStateArray.get(position, false), false)
+
             rvNews = findViewById(R.id.rv_news)
 
             tvTitle.text = getFormatTitle(t, prettyTime)
@@ -80,8 +84,7 @@ class HotTopicsAdapter(context: Context?) : BaseAdapter<Topic>(context) {
                 DetailActivity.start(context as MainActivity, t!!.id, t.title)
             })
 
-            rvNews.layoutManager = manager
-            rvNews.recycledViewPool = viewPool
+            rvNews.layoutManager = LinearLayoutManager(context)
             if (rvNews.adapter == null) {
                 adapter = HotNewsAdapter(context)
                 rvNews.adapter = adapter

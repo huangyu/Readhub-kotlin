@@ -45,6 +45,7 @@ class HotTopicsAdapter(context: Context?) : BaseAdapter<Topic>(context) {
 
         private lateinit var llRoot: LinearLayout
         private lateinit var tvTitle: TextView
+        private lateinit var tvTime: TextView
         private lateinit var tvSummary: TextView
         private lateinit var expandableLayout: ExpandableLayout
         private lateinit var rvNews: RecyclerView
@@ -53,6 +54,7 @@ class HotTopicsAdapter(context: Context?) : BaseAdapter<Topic>(context) {
             llRoot = findViewById(R.id.ll_root)
 
             tvTitle = findViewById(R.id.tv_title)
+            tvTime = findViewById(R.id.tv_time)
             tvSummary = findViewById(R.id.tv_summary)
             expandableLayout = findViewById(R.id.expandable_layout)
             expandableLayout.setOnExpansionUpdateListener(object : ExpandableLayout.OnExpansionUpdateListener {
@@ -73,15 +75,16 @@ class HotTopicsAdapter(context: Context?) : BaseAdapter<Topic>(context) {
 
             rvNews = findViewById(R.id.rv_news)
 
-            tvTitle.text = getFormatTitle(t, prettyTime)
-            tvSummary.text = t?.summary?.trim()
+            tvTitle.text = t!!.title.trim()
+            tvTime.text = getFormatTime(t, prettyTime)
+            tvSummary.text = t.summary.trim()
 
-            tvTitle.setOnClickListener({ _ ->
+            llRoot.setOnClickListener({ _ ->
                 expandableLayout.toggle()
             })
 
             tvSummary.setOnClickListener({ _ ->
-                DetailActivity.start(context as MainActivity, t!!.id, t.title)
+                DetailActivity.start(context as MainActivity, t.id, t.title)
             })
 
             rvNews.layoutManager = LinearLayoutManager(context)
@@ -89,17 +92,15 @@ class HotTopicsAdapter(context: Context?) : BaseAdapter<Topic>(context) {
                 adapter = HotNewsAdapter(context)
                 rvNews.adapter = adapter
             }
-            adapter.initList(t?.newsArray!!.take(3))
+            adapter.initList(t.newsArray.take(3))
         }
 
-        private fun getFormatTitle(t: Topic?, prettyTime: PrettyTime): SpannableString {
-            var title = t?.title?.trim()
-            val time = prettyTime.format(DateTime(t?.publishDate).toDate()).replace(" ", "")
-            title = """$title    $time"""
-            val formatTitle = SpannableString(title)
-            formatTitle.setSpan(ForegroundColorSpan(Color.parseColor("#9E9E9E")), title.lastIndexOf(" "), title.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            formatTitle.setSpan(AbsoluteSizeSpan(14, true), title.lastIndexOf(" "), title.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            return formatTitle
+        private fun getFormatTime(t: Topic?, prettyTime: PrettyTime): SpannableString {
+            val time = prettyTime.format(DateTime(t!!.publishDate).toDate()).replace(" ", "")
+            val formtTime = SpannableString(time)
+            formtTime.setSpan(ForegroundColorSpan(Color.parseColor("#9E9E9E")), 0, time.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            formtTime.setSpan(AbsoluteSizeSpan(14, true), 0, time.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            return formtTime
         }
 
     }

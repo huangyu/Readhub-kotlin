@@ -46,7 +46,7 @@ abstract class LazyLoadFragment : Fragment() {
             return
         }
 
-        if (userVisibleHint) {
+        if (userVisibleHint && !isLoad) {
             lazyLoad()
             isLoad = true
         } else {

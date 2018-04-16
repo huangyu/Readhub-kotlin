@@ -75,9 +75,9 @@ class HotTopicsAdapter(context: Context?) : BaseAdapter<Topic>(context) {
 
             rvNews = findViewById(R.id.rv_news)
 
-            tvTitle.text = t!!.title.trim()
+            tvTitle.text = t!!.title
             tvTime.text = getFormatTime(t, prettyTime)
-            tvSummary.text = t.summary.trim()
+            tvSummary.text = t.summary
 
             llRoot.setOnClickListener({ _ ->
                 expandableLayout.toggle()
@@ -97,10 +97,10 @@ class HotTopicsAdapter(context: Context?) : BaseAdapter<Topic>(context) {
 
         private fun getFormatTime(t: Topic?, prettyTime: PrettyTime): SpannableString {
             val time = prettyTime.format(DateTime(t!!.publishDate).toDate()).replace(" ", "")
-            val formtTime = SpannableString(time)
-            formtTime.setSpan(ForegroundColorSpan(Color.parseColor("#9E9E9E")), 0, time.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            formtTime.setSpan(AbsoluteSizeSpan(14, true), 0, time.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            return formtTime
+            val formatTime = SpannableString(time)
+            formatTime.setSpan(ForegroundColorSpan(Color.parseColor("#9E9E9E")), 0, time.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            formatTime.setSpan(AbsoluteSizeSpan(14, true), 0, time.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            return formatTime
         }
 
     }

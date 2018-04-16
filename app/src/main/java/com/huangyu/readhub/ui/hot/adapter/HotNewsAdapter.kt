@@ -39,11 +39,11 @@ class HotNewsAdapter(context: Context?) : BaseAdapter<News>(context) {
 
             tvTitle.movementMethod = LinkMovementMethod.getInstance()
 
-            val title = t!!.title.trim()
-            val site = t.siteName.trim()
+            val title = t!!.title
+            val site = t.siteName
             val formatTitle = SpannableString(title)
             formatTitle.setSpan(UnderlineSpan(), 0, title.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-            formatTitle.setSpan(DefaultClickableSpan(context, t.title.trim(), t.mobileUrl), 0, title.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            formatTitle.setSpan(DefaultClickableSpan(context, t.title, t.mobileUrl), 0, title.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
             tvTitle.text = formatTitle
             tvSite.text = site

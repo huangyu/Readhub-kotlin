@@ -12,7 +12,7 @@ import com.huangyu.readhub.ui.blockchain.fragment.BlackChainNewsFragment
 import com.huangyu.readhub.ui.dev.fragment.DevNewsFragment
 import com.huangyu.readhub.ui.hot.fragment.HotTopicsFragment
 import com.huangyu.readhub.ui.main.adapter.ViewPagerAdapter
-import com.huangyu.readhub.ui.tech.fragment.TechNewsFragment
+import com.huangyu.readhub.ui.tech.TechNewsFragment
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector

@@ -1,5 +1,6 @@
 package com.huangyu.readhub.data.net
 
+import com.huangyu.readhub.data.bean.TechNews
 import com.huangyu.readhub.data.bean.TopicDetail
 import com.huangyu.readhub.data.bean.Topics
 import io.reactivex.Observable
@@ -20,5 +21,11 @@ interface ApiService {
 
     @GET("topic/{topicId}")
     fun getTopicDetail(@Path("topicId") topicId: String): Observable<TopicDetail>
+
+    @GET("news")
+    fun getTechNews(@Query("lastCursor") lastCursor: Long, @Query("pageSize") pageSize: Int): Observable<TechNews>
+
+    @GET("news")
+    fun getTechNews(@Query("pageSize") pageSize: Int): Observable<TechNews>
 
 }

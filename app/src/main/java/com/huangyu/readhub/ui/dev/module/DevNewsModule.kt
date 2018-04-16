@@ -15,9 +15,9 @@ import dagger.Provides
 class DevNewsModule {
 
     @Provides
-    internal fun provideTechNewsModel(model: DevNewsModel): IDevNewsModel = model
+    internal fun provideDevNewsModel(model: DevNewsModel): IDevNewsModel = model
 
     @Provides
-    internal fun provideTechNewsPresenter(presenter: DevNewsPresenter<IDevNewsView, IDevNewsModel>): IDevNewsPresenter<IDevNewsView, IDevNewsModel> = presenter
+    internal fun provideDevNewsPresenter(presenter: DevNewsPresenter<IDevNewsView, IDevNewsModel>): IDevNewsPresenter<IDevNewsView, IDevNewsModel> = presenter
 
 }

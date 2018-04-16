@@ -1,5 +1,6 @@
 package com.huangyu.readhub.di.module
 
+import com.huangyu.readhub.ui.blockchain.module.BlockChainFragmentProvider
 import com.huangyu.readhub.ui.detail.DetailActivity
 import com.huangyu.readhub.ui.detail.module.DetailModule
 import com.huangyu.readhub.ui.dev.module.DevNewsFragmentProvider
@@ -15,7 +16,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityModule {
 
-    @ContributesAndroidInjector(modules = [HotTopicsFragmentProvider::class, TechNewsFragmentProvider::class, DevNewsFragmentProvider::class])
+    @ContributesAndroidInjector(modules = [HotTopicsFragmentProvider::class, TechNewsFragmentProvider::class, DevNewsFragmentProvider::class, BlockChainFragmentProvider::class])
     abstract fun bindMainActivity(): MainActivity
 
     @ContributesAndroidInjector(modules = [DetailModule::class])

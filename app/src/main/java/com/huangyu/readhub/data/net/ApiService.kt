@@ -28,4 +28,10 @@ interface ApiService {
     @GET("news")
     fun getTechNews(@Query("pageSize") pageSize: Int): Observable<TechNews>
 
+    @GET("technews")
+    fun getDevNews(@Query("lastCursor") lastCursor: Long, @Query("pageSize") pageSize: Int): Observable<TechNews>
+
+    @GET("technews")
+    fun getDevNews(@Query("pageSize") pageSize: Int): Observable<TechNews>
+
 }

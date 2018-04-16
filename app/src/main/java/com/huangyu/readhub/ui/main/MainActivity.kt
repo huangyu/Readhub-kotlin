@@ -9,7 +9,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem
 import com.huangyu.readhub.R
 import com.huangyu.readhub.base.BaseInjectActivity
 import com.huangyu.readhub.ui.blockchain.fragment.BlackChainNewsFragment
-import com.huangyu.readhub.ui.dev.fragment.DevNewsFragment
+import com.huangyu.readhub.ui.dev.DevNewsFragment
 import com.huangyu.readhub.ui.hot.fragment.HotTopicsFragment
 import com.huangyu.readhub.ui.main.adapter.ViewPagerAdapter
 import com.huangyu.readhub.ui.tech.TechNewsFragment

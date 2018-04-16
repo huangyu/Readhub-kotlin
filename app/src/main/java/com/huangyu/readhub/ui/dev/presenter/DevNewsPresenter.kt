@@ -16,7 +16,6 @@ class DevNewsPresenter<V : IDevNewsView, M : IDevNewsModel> @Inject internal con
             if (lastCursor.isEmpty()) {
                 compositeDisposable.add(
                         it.queryDevNews()
-                                .delay(250, TimeUnit.MILLISECONDS)
                                 .compose(schedulerProvider.ioToMainObservableScheduler())
                                 .subscribe(
                                         { devNews ->
@@ -30,7 +29,6 @@ class DevNewsPresenter<V : IDevNewsView, M : IDevNewsModel> @Inject internal con
             } else {
                 compositeDisposable.add(
                         it.queryDevNews(lastCursor[0])
-                                .delay(250, TimeUnit.MILLISECONDS)
                                 .compose(schedulerProvider.ioToMainObservableScheduler())
                                 .subscribe(
                                         { devNews ->

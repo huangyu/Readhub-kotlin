@@ -5,7 +5,6 @@ import com.huangyu.readhub.ui.blockchain.model.IBlockChainModel
 import com.huangyu.readhub.ui.blockchain.view.IBlockChainView
 import com.huangyu.readhub.util.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class BlockChainPresenter<V : IBlockChainView, M : IBlockChainModel> @Inject internal constructor(model: M, schedulerProvider: SchedulerProvider, compositeDisposable: CompositeDisposable)
@@ -16,7 +15,6 @@ class BlockChainPresenter<V : IBlockChainView, M : IBlockChainModel> @Inject int
             if (lastCursor.isEmpty()) {
                 compositeDisposable.add(
                         it.queryBlockChainNews()
-                                .delay(250, TimeUnit.MILLISECONDS)
                                 .compose(schedulerProvider.ioToMainObservableScheduler())
                                 .subscribe(
                                         { bcNews ->
@@ -30,7 +28,6 @@ class BlockChainPresenter<V : IBlockChainView, M : IBlockChainModel> @Inject int
             } else {
                 compositeDisposable.add(
                         it.queryBlockChainNews(lastCursor[0])
-                                .delay(250, TimeUnit.MILLISECONDS)
                                 .compose(schedulerProvider.ioToMainObservableScheduler())
                                 .subscribe(
                                         { bcNews ->

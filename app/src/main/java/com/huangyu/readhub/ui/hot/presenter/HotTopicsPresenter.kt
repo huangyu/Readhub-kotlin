@@ -5,7 +5,6 @@ import com.huangyu.readhub.ui.hot.model.IHotTopicsModel
 import com.huangyu.readhub.ui.hot.view.IHotTopicsView
 import com.huangyu.readhub.util.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 /**
@@ -19,7 +18,6 @@ class HotTopicsPresenter<V : IHotTopicsView, M : IHotTopicsModel> @Inject intern
             if (lastCursor.isEmpty()) {
                 compositeDisposable.add(
                         it.queryHotTopics()
-                                .delay(250, TimeUnit.MILLISECONDS)
                                 .compose(schedulerProvider.ioToMainObservableScheduler())
                                 .subscribe(
                                         { _topics ->
@@ -33,7 +31,6 @@ class HotTopicsPresenter<V : IHotTopicsView, M : IHotTopicsModel> @Inject intern
             } else {
                 compositeDisposable.add(
                         it.queryHotTopics(lastCursor[0])
-                                .delay(250, TimeUnit.MILLISECONDS)
                                 .compose(schedulerProvider.ioToMainObservableScheduler())
                                 .subscribe(
                                         { _topics ->

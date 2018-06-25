@@ -26,6 +26,7 @@
                 android:indeterminateOnly="false"
                 android:progressDrawable="@drawable/web_view_progress"
                 android:visibility="gone"
+                style="@style/Widget.AppCompat.ProgressBar"
                 tools:progress="50"
                 tools:visibility="visible"/>
 

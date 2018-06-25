@@ -16,13 +16,54 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+            zipAlignEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    dexOptions {
+        preDexLibraries false
+        jumboMode true
+        javaMaxHeapSize "4g"
+    }
+
     packagingOptions {
-        exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+
+    applicationVariants.all { variant ->
+        if (variant.buildType.name == 'release') {
+            variant.outputs.all {
+                def name = 'Readhub'
+                def releaseTime = new Date().format("yyyyMMddHHmmss", TimeZone.getTimeZone("GMT+8"))
+                outputFileName = "${name}_v${defaultConfig.versionName}.${defaultConfig.versionCode}.${releaseTime}_release.pro.apk"
+            }
+        }
+        if (variant.buildType.name == 'debug') {
+            variant.outputs.all {
+                def name = 'Readhub'
+                def releaseTime = new Date().format("yyyyMMddHHmmss", TimeZone.getTimeZone("GMT+8"))
+                outputFileName = "${name}_v${defaultConfig.versionName}.${defaultConfig.versionCode}.${releaseTime}_debug.apk"
+            }
+        }
     }
 }
 

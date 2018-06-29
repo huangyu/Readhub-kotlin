@@ -16,7 +16,7 @@ ext {
     testrunner = '1.0.1'
     junit = '4.12'
     espresso = '3.0.1'
-    kotlin = '1.2.30'
+    kotlin = '1.2.50'
     android_kotlin = '0.3'
     dagger2 = '2.11'
     okhttp = '3.9.1'

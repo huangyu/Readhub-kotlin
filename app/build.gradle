@@ -75,14 +75,14 @@ dependencies {
     androidTestImplementation "com.android.support.test:runner:$rootProject.testrunner"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espresso"
 
-    //Aandroid support libraries
+    //Android support libraries
     implementation "com.android.support:appcompat-v7:$rootProject.android_support"
     implementation "com.android.support:recyclerview-v7:$rootProject.android_support"
     implementation "com.android.support:design:$rootProject.android_support"
     implementation "com.android.support.constraint:constraint-layout:$rootProject.constraint_layout"
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$rootProject.ext.kotlin"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.ext.kotlin"
     implementation "androidx.core:core-ktx:$rootProject.android_kotlin"
 
     // Dagger2
@@ -105,17 +105,13 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroid2"
 
-    // Room
-//    implementation "android.arch.persistence.room:rxjava2:$rootProject.room"
-//    kapt "android.arch.persistence.room:compiler:$rootProject.room"
-
     // Bottom-navigation-bar
     implementation "com.ashokvarma.android:bottom-navigation-bar:$rootProject.bottom_navi_bar"
 
-    // Irecyclerview
+    // IRecyclerView
     implementation "com.github.Aspsine:IRecyclerView:$rootProject.irecycler_view"
 
-    // Prettytime
+    // PrettyTime
     implementation "org.ocpsoft.prettytime:prettytime:$rootProject.pretty_time"
 
     // Joda

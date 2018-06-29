@@ -5,7 +5,6 @@ import com.huangyu.readhub.ui.dev.model.IDevNewsModel
 import com.huangyu.readhub.ui.dev.view.IDevNewsView
 import com.huangyu.readhub.util.SchedulerProvider
 import io.reactivex.disposables.CompositeDisposable
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class DevNewsPresenter<V : IDevNewsView, M : IDevNewsModel> @Inject internal constructor(model: M, schedulerProvider: SchedulerProvider, compositeDisposable: CompositeDisposable)

@@ -9,7 +9,7 @@ import com.huangyu.readhub.R
 
 class UniversalLoadMoreFooterView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : FrameLayout(context, attrs, defStyleAttr) {
 
-    public var status: Status? = null
+    var status: Status? = null
         set(status) {
             field = status
             change()

@@ -79,13 +79,13 @@ class HotTopicsAdapter(context: Context?) : BaseAdapter<Topic>(context) {
             tvTime.text = getFormatTime(t, prettyTime)
             tvSummary.text = t.summary
 
-            llRoot.setOnClickListener({ _ ->
+            llRoot.setOnClickListener{ _ ->
                 expandableLayout.toggle()
-            })
+            }
 
-            tvSummary.setOnClickListener({ _ ->
+            tvSummary.setOnClickListener{ _ ->
                 DetailActivity.start(context as MainActivity, t.id, t.title)
-            })
+            }
 
             rvNews.layoutManager = LinearLayoutManager(context)
             if (rvNews.adapter == null) {

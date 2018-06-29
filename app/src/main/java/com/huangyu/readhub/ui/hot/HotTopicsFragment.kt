@@ -1,4 +1,4 @@
-package com.huangyu.readhub.ui.hot.fragment
+package com.huangyu.readhub.ui.hot
 
 import android.os.Bundle
 import android.support.v4.widget.SwipeRefreshLayout
@@ -58,9 +58,9 @@ class HotTopicsFragment : LazyLoadFragment(), IHotTopicsView, SwipeRefreshLayout
     private fun initView() {
         swipe_refresh_layout.setColorSchemeResources(R.color.colorAccent)
         swipe_refresh_layout.setOnRefreshListener(this)
-        swipe_refresh_layout.setOnChildScrollUpCallback({ _, _ ->
+        swipe_refresh_layout.setOnChildScrollUpCallback{ _, _ ->
             recycler_view.scrollY > 0
-        })
+        }
 
         adapter = HotTopicsAdapter(context)
         recycler_view.layoutManager = LinearLayoutManager(context)
@@ -68,11 +68,9 @@ class HotTopicsFragment : LazyLoadFragment(), IHotTopicsView, SwipeRefreshLayout
         recycler_view.setOnLoadMoreListener(this)
 
         footer = recycler_view.loadMoreFooterView as UniversalLoadMoreFooterView
-        footer.status = UniversalLoadMoreFooterView.Status.GONE
     }
 
     private fun initData() {
-        footer.status = UniversalLoadMoreFooterView.Status.GONE
         swipe_refresh_layout.post { swipe_refresh_layout.isRefreshing = true }
 
         onRefresh()
@@ -95,6 +93,7 @@ class HotTopicsFragment : LazyLoadFragment(), IHotTopicsView, SwipeRefreshLayout
     }
 
     override fun onRefresh() {
+        footer.status = UniversalLoadMoreFooterView.Status.GONE
         adapter.clearList()
 
         presenter.queryHotTopics()

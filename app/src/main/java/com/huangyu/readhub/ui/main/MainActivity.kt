@@ -10,7 +10,7 @@ import com.huangyu.readhub.R
 import com.huangyu.readhub.base.BaseInjectActivity
 import com.huangyu.readhub.ui.blockchain.BlockChainNewsFragment
 import com.huangyu.readhub.ui.dev.DevNewsFragment
-import com.huangyu.readhub.ui.hot.fragment.HotTopicsFragment
+import com.huangyu.readhub.ui.hot.HotTopicsFragment
 import com.huangyu.readhub.ui.main.adapter.ViewPagerAdapter
 import com.huangyu.readhub.ui.tech.TechNewsFragment
 import dagger.android.AndroidInjector

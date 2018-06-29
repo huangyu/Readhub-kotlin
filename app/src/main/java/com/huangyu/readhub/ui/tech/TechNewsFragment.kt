@@ -58,9 +58,9 @@ class TechNewsFragment : LazyLoadFragment(), ITechNewsView, SwipeRefreshLayout.O
     private fun initView() {
         swipe_refresh_layout.setColorSchemeResources(R.color.colorAccent)
         swipe_refresh_layout.setOnRefreshListener(this)
-        swipe_refresh_layout.setOnChildScrollUpCallback({ _, _ ->
+        swipe_refresh_layout.setOnChildScrollUpCallback{ _, _ ->
             recycler_view.scrollY > 0
-        })
+        }
 
         adapter = TechNewsAdapter(context)
         recycler_view.layoutManager = LinearLayoutManager(context)
@@ -68,7 +68,6 @@ class TechNewsFragment : LazyLoadFragment(), ITechNewsView, SwipeRefreshLayout.O
         recycler_view.setOnLoadMoreListener(this)
 
         footer = recycler_view.loadMoreFooterView as UniversalLoadMoreFooterView
-        footer.status = UniversalLoadMoreFooterView.Status.GONE
     }
 
     private fun initData() {
@@ -95,6 +94,7 @@ class TechNewsFragment : LazyLoadFragment(), ITechNewsView, SwipeRefreshLayout.O
     }
 
     override fun onRefresh() {
+        footer.status = UniversalLoadMoreFooterView.Status.GONE
         adapter.clearList()
 
         presenter.queryTechNews()

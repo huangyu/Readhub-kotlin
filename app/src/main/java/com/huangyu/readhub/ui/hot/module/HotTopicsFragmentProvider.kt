@@ -1,6 +1,6 @@
 package com.huangyu.readhub.ui.hot.module
 
-import com.huangyu.readhub.ui.hot.fragment.HotTopicsFragment
+import com.huangyu.readhub.ui.hot.HotTopicsFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

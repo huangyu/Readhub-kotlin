@@ -182,14 +182,12 @@ class ExpandableLayout @JvmOverloads constructor(context: Context, attrs: Attrib
 
         // Infer state from previous value
         val delta = expansion - this.expansion
-        if (expansion == 0f) {
-            state = COLLAPSED.toInt()
-        } else if (expansion == 1f) {
-            state = EXPANDED.toInt()
-        } else if (delta < 0) {
-            state = COLLAPSING
-        } else if (delta > 0) {
-            state = EXPANDING
+
+        when {
+            expansion == 0f -> state = COLLAPSED
+            expansion == 1f -> state = EXPANDED
+            delta < 0 -> state = COLLAPSING
+            delta > 0 -> state = EXPANDING
         }
 
         visibility = if (state == COLLAPSED) View.GONE else View.VISIBLE

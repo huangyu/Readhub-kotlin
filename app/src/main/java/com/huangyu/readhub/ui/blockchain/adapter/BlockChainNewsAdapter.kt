@@ -48,9 +48,9 @@ class BlockChainNewsAdapter(context: Context?) : BaseAdapter<TechNew>(context) {
             tvAuthor.text = author
             tvTime.text = getFormatTime(t, prettyTime)
 
-            llRoot.setOnClickListener({ _ ->
+            llRoot.setOnClickListener{ _ ->
                 ArticleActivity.start(context as MainActivity, t!!.title, t.mobileUrl)
-            })
+            }
         }
 
         private fun getFormatTime(t: TechNew?, prettyTime: PrettyTime): SpannableString {
